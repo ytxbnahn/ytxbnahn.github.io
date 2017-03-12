@@ -4,17 +4,19 @@
     <div class="header-right">
       <nav>
         <ul>
-          <li class="head-li"  v-on:mouseenter="dataShow(this)" v-on:mouseleave="dataHidden(this)"><a><router-link to="/me">关于我 </router-link></a>
+          <li class="head-li"  v-on:mouseenter="dataShow(this)" v-on:mouseleave="dataHidden(this)"><a><router-link to="/">关于我 </router-link></a>
             <div v-bind:class="{hidden:isHidden}" class="head-list">
               <ul class="head-list-ul">
-                <li class="head-list-li" ><span   v-on:click="dataShow()">暂无内容</span></li>
+                <li class="head-list-li" ><span   v-on:click="demo()">暂无内容</span></li>
                 <li class="head-list-li" ><span>暂无内容</span></li>
+                <li class="head-list-li" ><span   v-on:click="dataShow()">暂无内容</span></li>
+                <li class="head-list-li" ><span @click="showHidden()">暂无内容</span></li>
               </ul>
             </div>
           </li>
-          <li class="head-li"><a><router-link to="/me">生涯 </router-link></a></a></li>
-          <li class="head-li"><a><router-link to="/me">技能 </router-link></a></a></li>
-          <li class="head-li"><a><router-link to="/me">项目 </router-link></a></a></li>
+          <li class="head-li"><a><router-link :data="{name:'nihao',num:'2'}" to="/career">生涯 </router-link></a></a></li>
+          <li class="head-li"><a><router-link to="/skill">技能 </router-link></a></a></li>
+          <li class="head-li"><a><router-link to="/project">项目 </router-link></a></a></li>
         </ul>
       </nav>
     </div>
@@ -26,12 +28,23 @@
       data() {
           return {
             header: {},
-            isHidden: true
+            isHidden: true,
+            msg: 'hello'
+          }
+      },
+      props: {
+          data: {
+              type: Object
           }
       },
       methods: {
         demo() {
-          console.log('hello')
+           console.log('dd')
+           this.$emit('demo', this.msg)
+        },
+        showHidden() {
+          this.$emit('showHidden', '============')
+          console.log('33333')
         },
         dataShow(it) {
             this.isHidden = false
@@ -44,6 +57,7 @@
       },
       created() {
           this.header = {bh: 'ddd', hh: '22222'}
+          console.log(JSON.stringify(this.data))
       }
   }
 </script>
@@ -92,8 +106,10 @@
     width: 96px;
     z-index:3;
     position: absolute;
+    border: 1px solid #e8e7e7;
     background-color: #fff;
     font-size:14px;
+    margin-top:-20px;
   }
   .head-list-li :hover{
     color:#0c94d7;

@@ -9,7 +9,7 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to career'
+      msg: 'Welcome to skill'
     }
   }
 }
@@ -19,4 +19,3 @@ export default {
 <style scoped>
 
 </style>
-
