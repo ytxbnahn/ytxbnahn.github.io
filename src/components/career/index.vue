@@ -13,8 +13,9 @@
         name: 'index',
         methods: {
             demo() {
+                console.log(this.$store.state.level)
                 console.log('dd')
-                console.log(this.props)
+                this.$store.dispatch('addAlert', '你好')
             }
         }
     }

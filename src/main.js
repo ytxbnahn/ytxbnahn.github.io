@@ -3,14 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import VueRouter from 'vue-router'
+import store from './store'
 // import 'iview/dist/styles/iview.css'
 // import iview from 'iview'
 import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import Resource from 'vue-resource'
 
-Vue.use(VueRouter)
 // Vue.use(iview)
 Vue.use(Mint)
 Vue.use(Resource)
@@ -18,6 +17,7 @@ Vue.use(Resource)
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

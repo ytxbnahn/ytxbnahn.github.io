@@ -13,7 +13,8 @@
     "mint-ui": "^2.2.0",
     "stylus": "0.54.5",
     "vue": "^2.1.10",
-    "vue-router": "^2.2.0"
+    "vue-router": "^2.2.0",
+    "vuex": "^2.0.0"
   },
   "devDependencies": {
     "stylus-loader": "^2.4.0",
