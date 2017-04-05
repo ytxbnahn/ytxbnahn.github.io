@@ -1,46 +1,32 @@
 <template>
     <div class="container">
       <div class="container-top">
-          <div class="container-top-list">
+          <div class="container-top-list" v-if="data.index">
               <ul class="container-top-ul" >
-                <li v-for="item in imgs" class="container-top-li"><img :src='item.img'/>
-                  <div class="container-top-shadow"><span>你好火影</span></div>
-                  <div class="container-top-bottom"><span>热爱着火影你好火影忍者哈哈哈哈哈</span></div>
+                <li v-for="(item,key,index) in data.index.images" ref="imglist" class="container-top-li">
+                  <img v-bind:class="{showimg: imgindex===key}" v-on:mouseleave="leaveImgs(key)" v-on:mouseenter="showImgs(key)" :src='item.img'/>
+                  <div class="container-top-shadow"><span>{{item.title}}</span></div>
+                  <div class="container-top-bottom" v-bind:class="{margintop: imgindex===key}"><span>{{item.content}}</span></div>
 
                 </li>
               </uL>
           </div>
       </div>
-      <div class="container-w">
-          <div class="container-w-left">
-              <aside class="con-con">
-                <div class="con-w-left">
-                  <h3 class="con-title">这里是公告</h3>
-                  <div class="con-w">
-                  其实没啥可写的你看右上角的图标画了个什么东西服气了真的 <a href="http://www.baidu.com" target="_blank">点击离开</a>
-                  </div>
-                </div>
-              </aside>
-              <aside class="con-list">
-                <h2 class="con-list-top">兴趣还好</h2>
-                <ul class="con-list-ul">
-                  <li class="con-list-li"><span>看动漫</span></li>
-                </ul>
-              </aside>
-              <aside><button v-on:click="demo()"></button></aside>
-              <aside></aside>
-          </div>
+      <div class="container-w" v-if="data.index">
+          <containleft :data="data.index.hobby" class="container-w-left"></containleft>
           <div class="container-w-c">
               <div style="margin:auto;width: 700px; height:360px"><carousel></carousel></div>
           </div>
-          <div class="container-w-right"> </div>
+          <containright :data="data.index.article" class="container-w-right"></containright>
       </div>
     </div>
 </template>
 
 <script>
   import yourJPGPath from '../assets/logo.png'
-  import carousel from './zuJin/carousel'
+  import carousel from './zuJian/carousel'
+  import containright from './zuJian/containright'
+  import containleft from './zuJian/containleft'
   export default {
     name: 'index',
     data () {
@@ -52,7 +38,10 @@
           {img: '../assets/logo.png'},
           {img: yourJPGPath},
           {img: '../assets/tu.jpg'}
-        ]
+        ],
+        showImg: false,
+        imgindex: 9999,
+        images: []
       }
     },
     props: {
@@ -61,12 +50,27 @@
       }
     },
     components: {
-       carousel
+       carousel,
+      containright,
+      containleft
+    },
+    created: function () {
+      this.$nextTick()
     },
     methods: {
       demo: function() {
-          this.imgs = this.data.imgs
+        this.imgs = this.data.imgs
         console.log(JSON.stringify(this.data.imgs))
+      },
+      showImgs: function (index) {
+        this.imgindex = index
+
+//        this.showImg = true
+      },
+      leaveImgs: function (index) {
+          this.imgindex = 9999
+          console.log(index)
+//        this.showImg = false
       }
     }
   }
@@ -89,35 +93,10 @@
     margin:30px auto;
 
   }
+
+
   .container-w-left{
     flex: 1;
-  }
-  .con-con{
-    overflow:hidden;
-    position:relative;
-    border: 1px solid #0c94d7;
-  }
-
-  .con-w-left{
-    padding: 15px;
-  }
-  .con-title{
-        color: #0c94d7;
-  }
-  .con-con :before{
-    position: absolute;
-    top: -14px;
-    right: 5px;
-    font-family: 'icomoon';
-    content: '\e644';
-    font-size: 25px;
-    height: 20px;
-    color: #0c94d7;
-    transition: all .1s linear
-  }
-  .con-w{
-      margin-top:5px;
-      text-align: initial;
   }
   .container-w-c{
     flex: 4;
@@ -126,10 +105,14 @@
   .container-w-right{
     flex:1;
   }
+  .container-top-ul{
+    height: 185px;
+  }
   .container-top-li{
     position: relative;
     float:left;
     margin-left: 30px;
+    width: 210px;
 
   }
   .container-top-li:first-child{
@@ -154,25 +137,23 @@
     padding:0px 10px 0 10px;
   }
   .container-top-bottom{
+    text-align: left;
+    padding: 2px;
+    font-size: 14px;
+    color: #8d8c8c;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 
-  }
-  .con-list{
-    margin-top:15px;
-  }
-  .con-list-top{
-    width:90px;
-    border-top:1px solid #0a0a0a;
-    padding:5px;
-  }
-  .con-list-ul{
-    margin-top:15px;
-    display:relative;
-  }
-  .con-list-li{
-        text-align: -webkit-left;
-  }
   .con-list-li span{
     margin-left: 15px;
+  }
+  .showimg{
+    transform: scale(1.1);
+  }
+  .margintop{
+    margin-top: 10px
   }
 </style>
 

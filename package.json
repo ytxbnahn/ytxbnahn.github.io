@@ -18,6 +18,7 @@
   },
   "devDependencies": {
     "stylus-loader": "^2.4.0",
+    "axios": "0.15.3",
     "autoprefixer": "^6.7.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
@@ -55,7 +56,7 @@
     "vue-style-loader": "^2.0.0",
     "vue-resource": "1.2.1",
     "vue-template-compiler": "^2.1.10",
-    "iview": "1.0.1",
+    "iview": "2.0.0-rc.6",
     "webpack": "^2.2.1",
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.16.1",

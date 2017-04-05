@@ -4,13 +4,13 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-// import 'iview/dist/styles/iview.css'
-// import iview from 'iview'
+import 'iview/dist/styles/iview.css'
+import iview from 'iview'
 import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import Resource from 'vue-resource'
 
-// Vue.use(iview)
+Vue.use(iview)
 Vue.use(Mint)
 Vue.use(Resource)
 /* eslint-disable no-new */

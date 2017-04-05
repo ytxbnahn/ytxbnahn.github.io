@@ -6,7 +6,8 @@ import mutations from './mutation'
 Vue.use(Vuex)
 
 const state = {
-  level: '第一周'
+  level: '第一周',
+  skillShow: true
 }
 
 export default new Vuex.Store({

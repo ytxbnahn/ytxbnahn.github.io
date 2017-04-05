@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1 @click="demo">{{ msg[0].id }}</h1>
+    <button v-if="msg[0].show">{{msg[0].show}}</button>
   </div>
 </template>
 
@@ -9,8 +10,18 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to career'
+      msg: [{
+          'id': 1
+      }]
     }
+  },
+  methods: {
+      demo: function() {
+          console.log('ddddddddddd')
+//          this.msg[0].show = 'ddd'
+        this.$set(this.msg[0], 'show', 'ddd')
+        console.log(JSON.stringify(this.msg))
+      }
   }
 }
 </script>

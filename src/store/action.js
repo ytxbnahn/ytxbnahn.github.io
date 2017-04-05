@@ -3,8 +3,8 @@
  */
 
 export default {
-  addAlert({ commit, state }, w) {
-    console.log(state.level)
+  skillShow({ commit, state }, w) {
+    console.log(state.skillShow)
     console.log('--------' + w)
     commit('GET_DATA', { w })
   }

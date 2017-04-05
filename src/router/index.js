@@ -5,6 +5,7 @@ import career from 'components/career/index'
 import skill from 'components/skill/index'
 import detail from 'components/career/detail'
 import project from 'components/project/index'
+import me from 'components/me/index'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/project',
       name: 'project',
       component: project
+    },
+    {
+      path: '/me',
+      name: 'me',
+      component: me
     }
   ]
 })

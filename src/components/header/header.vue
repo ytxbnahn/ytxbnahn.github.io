@@ -14,9 +14,10 @@
               </ul>
             </div>
           </li>
-          <li class="head-li"><a><router-link :data="{name:'nihao',num:'2'}" to="/career">生涯 </router-link></a></a></li>
-          <li class="head-li"><a><router-link to="/skill">技能 </router-link></a></a></li>
-          <li class="head-li"><a><router-link to="/project">项目 </router-link></a></a></li>
+          <li class="head-li"><a><router-link :data="{name:'nihao',num:'2'}" to="/career">生涯 </router-link></a></li>
+          <li class="head-li"><a><router-link to="/skill">技能 </router-link></a></li>
+          <li class="head-li"><a><router-link to="/project">项目 </router-link></a></li>
+          <li class="head-li"><a><router-link to="/me">测试 </router-link></a></li>
         </ul>
       </nav>
     </div>
