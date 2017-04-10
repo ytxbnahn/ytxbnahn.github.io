@@ -2,7 +2,9 @@
   <div id="app">
     <v-header :data="data"></v-header>
     <v-banner></v-banner>
-    <router-view :data="data"></router-view>
+    <transition name="page" mode="out-in">
+      <router-view :data="data"></router-view>
+    </transition>
   </div>
 </template>
 
@@ -60,5 +62,10 @@
     text-align: center;
     color: #2c3e50;
   }
-
+  .page-enter-active, .page-leave-active {
+    transition: opacity .3s ease
+  }
+  .page-enter, .page-leave-active {
+    opacity: 0
+  }
 </style>

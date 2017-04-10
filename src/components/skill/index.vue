@@ -102,9 +102,9 @@
         if (this.showData) {
           var showStart = setInterval(() => {
             if (i < t) {
-              console.log('ddd' + this)
+//              console.log('ddd' + this)
               this.msg = this.showData.substring(0, i + 1)
-              console.log(this.msg)
+//              console.log(this.msg)
               i++
             } else {
               clearInterval(showStart)
