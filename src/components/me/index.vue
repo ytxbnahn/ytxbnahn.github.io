@@ -15,6 +15,8 @@
     <bounce></bounce>
     <spinner :type='1' color='#000' ></spinner>
     <spinner :type='0' color='#000' ></spinner>
+    <div class="border"></div>
+    <button @click="alert()">alert</button>
   </div>
 </template>
 
@@ -36,11 +38,27 @@ export default {
     }
   },
   methods: {
+      alert: function() {
+          console.log('hello')
+        Notification.requestPermission(function(status) {
+          var n = new Notification('通知标题', { body: '这里是通知内容！' })
+          console.log(n)
+        }).then(function(result) {
+            if (result === 'denied') {
+                console.log('-------')
+              return
+            } else if (result === 'default') {
+             console.log('111111111111111111')
+              return
+            }
+        })
+      },
       demo: function(event) {
           console.log(JSON.stringify(event))
           console.log('ddddddddddd')
 //          this.msg[0].show = 'ddd'
         this.$set(this.msg[0], 'show', 'ddd') // 用于无法监听到数据变化
+        // array.$set(index, value); 数组变化坚挺不倒的情况
         console.log(JSON.stringify(this.msg))
       },
       demo2: function () {

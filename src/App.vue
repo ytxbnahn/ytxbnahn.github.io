@@ -40,6 +40,7 @@
       }
     },
     created: function () {
+//      axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
       axios.get('/static/data.json').then((res) => {
         this.data = res.data
         console.log(res)
