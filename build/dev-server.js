@@ -4,14 +4,14 @@ var config = require('../config')
 if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 }
-
 var opn = require('opn')
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
+const bodyParser = require('body-parser')
+var mongoose = require('mongoose')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.conf')
-
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
 // automatically open browser, if not set will be false
@@ -38,6 +38,26 @@ compiler.plugin('compilation', function (compilation) {
     cb()
   })
 })
+// mongoose
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://127.0.0.1/Maty')
+// mongoose.set('debug', true)
+
+const db = mongoose.connection
+
+db.on('error', function () {
+  console.log('Database connection error.')
+})
+
+db.once('open', function () {
+  console.log('The database has connected.')
+  //initialize()
+})
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
+var apiRoutes = express.Router()
+var api = require('../server/controllers/articles_controller.js')(apiRoutes)
+app.use('/api',apiRoutes)
 
 // proxy api requests
 Object.keys(proxyTable).forEach(function (context) {
@@ -53,7 +73,6 @@ app.use(require('connect-history-api-fallback')())
 
 // serve webpack bundle output
 app.use(devMiddleware)
-
 // enable hot-reload and state-preserving
 // compilation error display
 app.use(hotMiddleware)

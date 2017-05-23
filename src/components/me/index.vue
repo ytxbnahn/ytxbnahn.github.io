@@ -17,6 +17,7 @@
     <spinner :type='0' color='#000' ></spinner>
     <div class="border"></div>
     <button @click="alert()">alert</button>
+    <button @click="demo2">demo2222</button>
   </div>
 </template>
 
@@ -62,7 +63,8 @@ export default {
         console.log(JSON.stringify(this.msg))
       },
       demo2: function () {
-        console.log('emit')
+        this.$store.dispatch('skillShow', false)
+        console.log(this.$store.state.articleList)
       },
       showDemo: function () {
         this.show = !this.show

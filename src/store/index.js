@@ -7,7 +7,8 @@ Vue.use(Vuex)
 
 const state = {
   level: '第一周',
-  skillShow: true
+  skillShow: true,
+  articleList: []
 }
 
 export default new Vuex.Store({

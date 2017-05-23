@@ -10,12 +10,17 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "axios": "0.15.3",
+    "babel-polyfill": "^6.23.0",
+    "body-parser": "^1.17.2",
     "mint-ui": "^2.2.0",
+    "moment": "^2.18.1",
+    "mongodb": "^2.2.26",
+    "mongoose": "^4.9.9",
     "stylus": "0.54.5",
     "vue": "^2.1.10",
     "vue-router": "^2.2.0",
-    "vuex": "^2.0.0",
-    "axios": "0.15.3"
+    "vuex": "^2.0.0"
   },
   "devDependencies": {
     "stylus-loader": "^2.4.0",

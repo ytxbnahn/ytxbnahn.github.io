@@ -4,6 +4,7 @@ import index from 'components/index'
 import career from 'components/career/index'
 import skill from 'components/skill/index'
 import detail from 'components/career/detail'
+import admin from 'components/admin/admin'
 // import project from 'components/project/index'
 import me from 'components/me/index'
 
@@ -48,6 +49,11 @@ export default new Router({
       path: '/me',
       name: 'me',
       component: me
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: admin
     }
   ]
 })

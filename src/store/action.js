@@ -7,5 +7,10 @@ export default {
     console.log(state.skillShow)
     console.log('--------' + w)
     commit('GET_DATA', { w })
+  },
+  createArticle({ commit, state }, w) {
+    console.log(state.skillShow)
+    console.log('--------' + w)
+    commit('CREATED_ARTICLE', w)
   }
 }
