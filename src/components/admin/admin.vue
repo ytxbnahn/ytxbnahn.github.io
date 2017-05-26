@@ -1,7 +1,7 @@
 <template>
     <div class="hello">
         <h1>{{ msg }}</h1>
-      <button @click="createArticle">lalal</button>
+      <button @click="createArticle">创建文章</button>
     </div>
 </template>
 

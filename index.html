@@ -3,12 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>blog</title>
+    <script src="./static/socket.io.js"></script>
+    <script>
+      const socket = io.connect('localhost:8880/');
+    </script>
   </head>
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+
   <script>
+
     (function(doc, win) {
       var docEl = doc.documentElement,
         resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',

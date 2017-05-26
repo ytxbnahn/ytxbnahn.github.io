@@ -17,7 +17,7 @@
     <spinner :type='0' color='#000' ></spinner>
     <div class="border"></div>
     <button @click="alert()">alert</button>
-    <button @click="demo2">demo2222</button>
+    <button @click="demo2">获取文章</button>
   </div>
 </template>
 

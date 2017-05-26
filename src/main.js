@@ -9,10 +9,16 @@ import iview from 'iview'
 import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import Resource from 'vue-resource'
+import moment from 'moment'
+
+// 本地化，中文时间显示
+moment.locale('zh-cn')
+Vue.prototype.moment = moment
 
 Vue.use(iview)
 Vue.use(Mint)
 Vue.use(Resource)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

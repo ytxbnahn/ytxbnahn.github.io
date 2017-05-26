@@ -5,6 +5,7 @@ import career from 'components/career/index'
 import skill from 'components/skill/index'
 import detail from 'components/career/detail'
 import admin from 'components/admin/admin'
+import chat from 'components/chatting/chatting'
 // import project from 'components/project/index'
 import me from 'components/me/index'
 
@@ -54,6 +55,11 @@ export default new Router({
       path: '/admin',
       name: 'admin',
       component: admin
+    },
+    {
+      path: '/chatting',
+      name: 'chatting',
+      component: chat
     }
   ]
 })

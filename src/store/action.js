@@ -12,5 +12,15 @@ export default {
     console.log(state.skillShow)
     console.log('--------' + w)
     commit('CREATED_ARTICLE', w)
+  },
+  changeName({ commit, state }, name) {
+    commit('CHANGE_NAME', name)
+  },
+  setAddr({ commit, state }, addr) {
+    commit('SET_ADDR', addr)
+  },
+  showAbout({ commit, state }, flag) {
+    commit('SHOW_ABOUT', flag)
   }
+
 }

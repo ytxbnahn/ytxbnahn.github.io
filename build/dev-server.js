@@ -8,7 +8,7 @@ var opn = require('opn')
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
-const bodyParser = require('body-parser')
+
 var mongoose = require('mongoose')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.conf')
@@ -21,6 +21,37 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 var proxyTable = config.dev.proxyTable
 
 var app = express()
+
+const server = require('http').Server(app);
+
+const io = require('socket.io')(server);
+
+const http = require('http');
+
+const https = require('https');
+
+var bodyParser = require('body-parser')
+// var multer = require('multer');
+
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+// app.use(multer()); // for parsing multipart/form-data
+
+io.on('connection', (socket) => {
+
+  console.log('connection')
+  // 群聊
+  socket.on('sendGroupMsg', function (data) {
+    socket.broadcast.emit('receiveGroupMsg', data);
+  });
+
+  // 上线
+  socket.on('online', name => {
+    socket.broadcast.emit('online', name)
+  });
+
+})
+
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
@@ -38,6 +69,9 @@ compiler.plugin('compilation', function (compilation) {
     cb()
   })
 })
+
+
+
 // mongoose
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://127.0.0.1/Maty')
@@ -53,11 +87,13 @@ db.once('open', function () {
   console.log('The database has connected.')
   //initialize()
 })
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
+
 var apiRoutes = express.Router()
 var api = require('../server/controllers/articles_controller.js')(apiRoutes)
 app.use('/api',apiRoutes)
+
+
+
 
 // proxy api requests
 Object.keys(proxyTable).forEach(function (context) {
@@ -83,18 +119,43 @@ app.use(staticPath, express.static('./static'))
 
 var uri = 'http://localhost:' + port
 
-devMiddleware.waitUntilValid(function () {
-  console.log('> Listening at ' + uri + '\n')
+// devMiddleware.waitUntilValid(function () {
+//   console.log('> Listening at ' + uri + '\n')
+// })
+//
+// module.exports = app.listen(port, function (err) {
+//   if (err) {
+//     console.log(err)
+//     return
+//   }
+//
+//   // when env is testing, don't need open it
+//   if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
+//     opn(uri)
+//   }
+// })
+var _resolve
+var readyPromise = new Promise(resolve => {
+  _resolve = resolve
 })
 
-module.exports = app.listen(port, function (err) {
-  if (err) {
-    console.log(err)
-    return
-  }
-
+console.log('> Starting dev server...')
+devMiddleware.waitUntilValid(() => {
+  console.log('> Listening at ' + uri + '\n')
   // when env is testing, don't need open it
   if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
     opn(uri)
   }
+  _resolve()
 })
+
+// var server = app.listen(port)
+
+server.listen(8880);
+
+module.exports = {
+  ready: readyPromise,
+  close: () => {
+    server.close()
+  }
+}
