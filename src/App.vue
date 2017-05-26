@@ -61,7 +61,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   @import "common/stylus/base.styl";
-
+  @import "common/index.styl";
   #app {
     height:100%;
     position: relative;

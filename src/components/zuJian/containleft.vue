@@ -4,6 +4,7 @@
       <div class="con-w-left">
         <h3 class="con-title">这里是公告</h3>
         <div class="con-w">
+          <i class="icon-turned_in"></i>
           其实没啥可写的你看右上角的图标画了个什么东西服气了真的 <a href="http://www.baidu.com" target="_blank">点击离开</a>
         </div>
       </div>
@@ -27,11 +28,11 @@
                 msg: 'Welcome to Your Vue.js App'
             }
         },
-      props: {
-            data: {
-                type: Array
-            }
-      }
+        props: {
+              data: {
+                  type: Array
+              }
+        }
     }
 </script>
 
@@ -45,10 +46,9 @@
   }
   .con-con :before{
     position: absolute;
-    top: -14px;
+    top: -7px;
     right: 5px;
     font-family: 'icomoon';
-    content: '\e644';
     font-size: 25px;
     height: 20px;
     color: #0c94d7;
