@@ -15,6 +15,7 @@ import moment from 'moment'
 moment.locale('zh-cn')
 Vue.prototype.moment = moment
 
+Vue.use(socket)
 Vue.use(iview)
 Vue.use(Mint)
 Vue.use(Resource)

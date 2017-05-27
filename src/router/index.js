@@ -57,8 +57,8 @@ export default new Router({
       component: admin
     },
     {
-      path: '/chatting',
-      name: 'chatting',
+      path: '/chat',
+      name: 'chat',
       component: chat
     }
   ]

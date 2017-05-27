@@ -83,7 +83,7 @@
     },
     methods: {
       hidden: function () {
-        this.$store.dispatch('skillShow', false)
+        this.$store.dispatch('getAllArticles', false)
         if (this.$store.state.skillShow) {
             console.log('ddd')
         }

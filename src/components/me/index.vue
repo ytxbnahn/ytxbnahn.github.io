@@ -63,7 +63,7 @@ export default {
         console.log(JSON.stringify(this.msg))
       },
       demo2: function () {
-        this.$store.dispatch('skillShow', false)
+        this.$store.dispatch('getAllArticles', false)
         console.log(this.$store.state.articleList)
       },
       showDemo: function () {
