@@ -28,50 +28,6 @@
           color: #fff;
           font-size: 14px;
         }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
         `,
         showStyle: '<style>' +
         ' .contain pre {' +

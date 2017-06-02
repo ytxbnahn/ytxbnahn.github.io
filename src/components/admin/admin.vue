@@ -1,5 +1,17 @@
 <template>
     <div class="editor-box">
+      <div class="title">
+        <span class="content-title">
+          文章题目
+        </span>
+        <input/>
+      </div>
+      <div class="tag">
+        <span class="content-title">
+          文章标签
+        </span>
+        <input/>
+      </div>
       <textarea id="editor"></textarea>
       <button @click="createArticle">创建文章</button>
     </div>
@@ -31,6 +43,7 @@
         mounted: function () {
           this.$nextTick(() => {
               console.log('----' + this.$store.state)
+            this.$store.dispatch('getCurrentArticle')
             this.articleTitle = this.$store.state.currentArticle.title
             this.articleContent = this.$store.state.currentArticle.content
             simplemde.value(this.articleContent)
@@ -69,44 +82,14 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus" scoped>
   @import '../../common/stylus/preview.styl'
+  input,button,select,textarea
+    outline:none
+    border: none
   .editor-box
     position relative
     padding 15px
     text-align left
     input
       padding 7px
-      background-color $grey-bg
       width 350px
-    &__title
-      font-size 25px
-      color $blue
-      padding 10px
-    &__input-box
-      font-size 17px
-      margin 15px 0
-    &__tagList
-      list-style none
-      overflow hidden
-      margin-bottom 15px
-      li
-        float left
-        height 30px
-        line-height @height
-        margin-right 20px
-        verticle-align center
-        text-algin center
-        border-radius 5px
-        padding 0 5px
-        cursor pointer
-      li:hover
-        background-color $grey-bg
-    &__button-box
-      float right
-      margin 10px
-      button
-        width 80px
-        padding 5px
-        background-color $blue
-        color white
-        margin-left 15px
 </style>
