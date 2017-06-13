@@ -23,6 +23,8 @@ module.exports = {
     'no-floating-decimal': 0,
     'no-undef': 0,
     'no-return-assign': 0,
-    'no-unused-vars': 0
+    'no-unused-vars': 0,
+    'semi': 0,
+    'wrap-iife':0
   }
 }

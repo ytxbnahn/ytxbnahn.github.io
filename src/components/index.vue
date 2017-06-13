@@ -4,7 +4,7 @@
           <div class="container-top-list" v-if="data.index">
               <ul class="container-top-ul" >
                 <li v-for="(item,key,index) in data.index.images" ref="imglist" class="container-top-li">
-                  <img v-bind:class="{showimg: imgindex===key}" v-on:mouseleave="leaveImgs(key)" v-on:mouseenter="showImgs(key)" :src='item.img'/>
+                  <img :src='item.img'/>
                   <div class="container-top-shadow"><span>{{item.title}}</span></div>
                   <div class="container-top-bottom" v-bind:class="{margintop: imgindex===key}"><span>{{item.content}}</span></div>
 
@@ -50,7 +50,7 @@
       }
     },
     components: {
-       carousel,
+      carousel,
       containright,
       containleft
     },
@@ -61,16 +61,6 @@
       demo: function() {
         this.imgs = this.data.imgs
         console.log(JSON.stringify(this.data.imgs))
-      },
-      showImgs: function (index) {
-        this.imgindex = index
-
-//        this.showImg = true
-      },
-      leaveImgs: function (index) {
-          this.imgindex = 9999
-          console.log(index)
-//        this.showImg = false
       }
     }
   }
@@ -148,9 +138,6 @@
 
   .con-list-li span{
     margin-left: 15px;
-  }
-  .showimg{
-    transform: scale(1.1);
   }
   .margintop{
     margin-top: 10px

@@ -7,10 +7,18 @@ const CREATED_ARTICLE = 'CREATED_ARTICLE'
 const CHANGE_NAME = 'CHANGE_NAME'
 const SET_ADDR = 'SET_ADDR'
 const SHOW_ABOUT = 'SHOW_ABOUT'
+const GETONE_ARTICLE = 'GETONE_ARTICLE'
 export default {
   [GETALL_ARTICLES](state, payload, options) {
     api.getAllArticles().then(res => {
       state.articleList = res.data
+      console.log(res)
+    })
+    console.log(state.level + '=======' + payload.w + JSON.stringify(options))
+  },
+  [GETONE_ARTICLE](state, payload, options) {
+    api.getOneArticle(payload.w).then(res => {
+      state.currentArticle = res.data
       console.log(res)
     })
     console.log(state.level + '=======' + payload.w + JSON.stringify(options))

@@ -8,6 +8,11 @@ export default {
     console.log('--------' + w)
     commit('GETALL_ARTICLES', { w })
   },
+  getOneArticle({ commit, state }, w) {
+    console.log(state.skillShow)
+    console.log('--------' + w)
+    commit('GETONE_ARTICLE', { w })
+  },
   getCurrentArticle({ commit, state }, index) {
     let article
     console.log('currentIndex:', index)
@@ -36,7 +41,7 @@ export default {
   },
   createArticle({ commit, state }, w) {
     console.log(state.skillShow)
-    console.log('--------' + w)
+    console.log('--------' + JSON.stringify(w))
     commit('CREATED_ARTICLE', w)
   },
   changeName({ commit, state }, name) {

@@ -89,7 +89,7 @@ db.once('open', function () {
 })
 
 var apiRoutes = express.Router()
-var api = require('../server/controllers/articles_controller.js')(apiRoutes)
+require('../server/routes/index.js')(apiRoutes)
 app.use('/api',apiRoutes)
 
 

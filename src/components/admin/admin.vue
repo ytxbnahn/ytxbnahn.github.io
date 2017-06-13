@@ -4,7 +4,7 @@
         <span class="content-title">
           文章题目
         </span>
-        <input/>
+        <input v-model="articleTitle"/>
       </div>
       <div class="tag">
         <span class="content-title">
@@ -12,7 +12,7 @@
         </span>
         <input/>
       </div>
-      <textarea id="editor"></textarea>
+      <textarea id="editor" v-model="articleContent"></textarea>
       <button @click="createArticle">创建文章</button>
     </div>
 </template>
@@ -37,7 +37,13 @@
         },
         methods: {
             createArticle: function () {
-              this.$store.dispatch('createArticle', this.article)
+              const info = {
+                title: this.articleTitle,
+                content: this.articleContent,
+                publish: false
+              }
+              console.log(JSON.stringify(info))
+              this.$store.dispatch('createArticle', info)
             }
         },
         mounted: function () {
@@ -56,12 +62,12 @@
               return marked(plainText) // Returns HTML from a custom parser
             }
           })
-//          simplemde.codemirror.on("change", () => {
-//            let value = simplemde.value();
-//            // 如果文章内容相同就不保存了
-//            if (this.currentArticle.content === value) {
-//              return;
-//            }
+          simplemde.codemirror.on('change', () => {
+            let value = simplemde.value()
+            // 如果文章内容相同就不保存了
+            if (this.$store.state.currentArticle.content === value) {
+              return
+            }
 //            // 如果文章已经保存
 //            if (this.currentArticle.save) {
 //              // 改变文章状态 => 未保存
@@ -73,8 +79,8 @@
 //                content: value
 //              })
 //            }
-//          this.articleContent = value
-//        })
+          this.articleContent = value
+        })
         }
     }
 </script>

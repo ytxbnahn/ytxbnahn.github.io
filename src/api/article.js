@@ -25,5 +25,8 @@ export default {
   },
   getAllArticles(tag = '', page = 1, limit = 0) {
     return Axios.get(`/api/article/getArticle?tag=${tag}&page=${page}&limit=${limit}`)
+  },
+  getOneArticle(id) {
+    return Axios.get(`/api/article/getOneArticle?id=${id}`)
   }
 }

@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <my-canvas></my-canvas>
     <v-header :data="data"></v-header>
     <v-banner></v-banner>
     <transition name="page" mode="out-in">
@@ -11,6 +12,8 @@
 <script type="text/ecmascript-6">
   import header from './components/header/header.vue'
   import banner from './components/header/banner.vue'
+  import MyCanvas from './components/zuJian/MyCanvas.vue'
+
   import axios from 'axios'
   export default {
     name: 'app',
@@ -32,7 +35,8 @@
     },
     components: {
       'v-header': header,
-      'v-banner': banner
+      'v-banner': banner,
+      'my-canvas': MyCanvas
     },
     methods: {
       demo: function(name) {
@@ -68,7 +72,6 @@
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
     color: #2c3e50;
   }
   .page-enter-active, .page-leave-active {

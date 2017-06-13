@@ -5,6 +5,7 @@ import career from 'components/career/index'
 import skill from 'components/skill/index'
 import detail from 'components/career/detail'
 import admin from 'components/admin/admin'
+import article from 'components/project/article'
 import chat from 'components/chatting/chatting'
 // import project from 'components/project/index'
 import me from 'components/me/index'
@@ -45,6 +46,11 @@ export default new Router({
       path: '/project',
       name: 'project',
       component: project
+    },
+    {
+      path: '/article/:id',
+      name: 'article',
+      component: article
     },
     {
       path: '/me',

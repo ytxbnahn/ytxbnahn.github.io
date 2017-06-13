@@ -8,23 +8,17 @@
             </span>
           </div>
         </h3>
-        <ul class="list">
+        <ul class="list" v-for="item in articleList">
           <li class="item">
-            <a src="" class="clearfix">
-              <h4 class="item-title">夸与问题</h4>
+              <router-link :to="{path: '/article/' + item._id}" class="clearfix">
+                <h4 class="item-title">{{item.title}}</h4>
+              </router-link>
               <div class="item-w">
-                <p class="item-p">  范德萨发多少分三大范德萨范德萨发多少分三大范德萨范德萨发多少分三大范德萨范德萨发多少分三大范德萨范德萨发多少分三大范德萨</p>
+                <p class="item-p">{{item.abstract}}</p>
                 <div class="tag">
                   <span class="tag-w">js</span>
                 </div>
               </div>
-            </a>
-          </li>
-          <li class="item">
-            <a src="">nihao</a>
-          </li>
-          <li class="item">
-            <a src="">nihao</a>
           </li>
         </ul>
     </div>
@@ -32,20 +26,29 @@
 
 <script>
     export default {
-        name: 'hello',
-        data () {
-            return {
-                msg: 'Welcome to Your Vue.js App'
-            }
-        },
-        props: {
-              data: {
-                  type: Array
-              }
-        },
+      name: 'hello',
+      data () {
+          return {
+          }
+      },
+      props: {
+          data: {
+              type: Array
+          }
+      },
+      computed: {
+        articleList() {
+          return this.$store.state.articleList
+        }
+      },
       created: function () {
         console.log('dd')
-      }
+        this.$store.dispatch('getAllArticles', false)
+        console.log(JSON.stringify('999999999999999999' + JSON.stringify(this.articleList)))
+      },
+        mounted: function () {
+
+        }
     }
 </script>
 
@@ -80,7 +83,7 @@
   }
   .item-p{
     margin:3px 0px 5px 0px ;
-    height: 55px;
+    height: 39px;
     overflow: hidden;
   }
   .tag{
