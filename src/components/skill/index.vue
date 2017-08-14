@@ -28,50 +28,6 @@
           color: #fff;
           font-size: 14px;
         }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
-        .contain pre{
-          color: #fff;
-          font-size: 14px;
-        }
         `,
         showStyle: '<style>' +
         ' .contain pre {' +
@@ -83,7 +39,7 @@
     },
     methods: {
       hidden: function () {
-        this.$store.dispatch('skillShow', false)
+        this.$store.dispatch('getAllArticles', false)
         if (this.$store.state.skillShow) {
             console.log('ddd')
         }
@@ -102,9 +58,9 @@
         if (this.showData) {
           var showStart = setInterval(() => {
             if (i < t) {
-              console.log('ddd' + this)
+//              console.log('ddd' + this)
               this.msg = this.showData.substring(0, i + 1)
-              console.log(this.msg)
+//              console.log(this.msg)
               i++
             } else {
               clearInterval(showStart)
