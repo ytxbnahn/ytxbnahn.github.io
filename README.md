@@ -10,7 +10,7 @@
 
  - 马堂跃/男/1993 
  - 本科/烟台大学 
- - 工作年限：2 年
+ - 工作年限：1 年
  - Github：https://github.com/ytxbnahn 
 
  - 期望职位：Web前端程序员
