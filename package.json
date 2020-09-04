@@ -19,7 +19,7 @@
     "marked": "^0.3.6",
     "mint-ui": "^2.2.0",
     "moment": "^2.18.1",
-    "mongodb": "^2.2.26",
+    "mongodb": "^3.6.1",
     "mongoose": "^4.9.9",
     "simplemde": "^1.11.2",
     "socket.io": "^1.7.3",
